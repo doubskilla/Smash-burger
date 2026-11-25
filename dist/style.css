@@ -1,0 +1,537 @@
+:root{--ink:#860b12;--paper:#fff6e8;--yellow:#ffd437;color:var(--ink);background:var(--paper);font:16px Arial,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:flex;flex-direction:column}button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}a:focus-visible,button:focus-visible{outline:2px solid;outline-offset:4px}header,.hero-meta{margin:0 5vw;display:flex;align-items:center;justify-content:space-between}header{position:relative;gap:2rem;height:88px;border-bottom:1px solid;z-index:4}header img{object-fit:contain}.location{margin-left:auto;font-size:.94rem}.location b,.hero-meta b{margin:0 .4em}.menu{width:46px;height:46px;display:grid;align-content:center;justify-items:end;gap:5px}.menu i{width:30px;height:3px;border-radius:2px;background:currentColor}nav{position:absolute;right:0;top:85%;background:var(--paper);padding:8px;border:1px solid}nav button{display:block;padding:12px 24px}nav button:hover{background:var(--yellow)}main{margin:auto 0}.hero{max-width:1600px;margin:auto;width:100%;display:grid;grid-template-columns:42% 58%;align-items:center;padding:3.5vw 4vw}.art{position:relative;grid-column:2;grid-row:1;aspect-ratio:1.24;isolation:isolate}.panel{position:absolute;inset:8% 4% 4%;background:var(--yellow);transform:rotate(-7deg)}.burger{position:absolute;width:104%;left:-2%;bottom:-1%}.note{width:31%;position:absolute;left:6%;top:-1%;transform:rotate(-3deg)}.arrow{position:absolute;width:9%;left:4%;top:18%;fill:none;stroke:var(--ink);stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.copy{grid-column:1;grid-row:1;z-index:1;padding-left:1vw}h1{margin:0 0 2.2rem}h1 img{display:block;width:100%;height:auto}.cta{background:var(--ink);color:var(--paper);border-radius:6px;font-weight:700;padding:15px 22px;display:inline-flex;align-items:center;gap:16px}.cta span{font-size:1.5rem;line-height:1;transition:transform .2s}.cta:hover span{transform:translateX(4px)}.hero-meta{border-top:1px solid;padding:10px 0;font-size:.85rem}.hero-meta button{min-height:44px}.hero-meta b{font-size:1.15rem}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}dialog{background:var(--paper);color:var(--ink);border:1px solid;border-radius:8px;padding:30px;width:min(420px,90vw)}dialog::backdrop{background:#39170ea8}h2{margin-top:4px}.close{float:right;font-size:2rem}dl{display:grid;grid-template-columns:1fr auto;gap:16px}dd{margin:0}
+@media(max-width:700px){:root{--mobile-header-height:70px}header{height:var(--mobile-header-height)}header img{width:87px;height:auto}.location{display:none}.hero{display:flex;flex-direction:column;align-items:stretch;padding:22px 0 26px}.art{width:min(100%,490px);margin:0 auto;aspect-ratio:1.24}.copy{padding:14px 5.5vw 0}.copy h1{width:min(84%,355px);margin:0 0 20px}.cta{padding:13px 18px}.hero-meta{font-size:.76rem}}
+@media(prefers-reduced-motion:no-preference){.play .panel{animation:sweep .65s cubic-bezier(.19,1,.22,1) both}.play .burger{animation:land .82s .17s cubic-bezier(.22,.8,.24,1) both}.play .note{animation:write .45s .72s both}.play .arrow path{stroke-dasharray:1;animation:draw .46s .96s both}.play h1 img{animation:ink .66s 1.15s cubic-bezier(.2,.85,.2,1) both}.play .cta{animation:rise .48s 1.55s both}}
+@keyframes sweep{from{clip-path:inset(0 100% 0 0);transform:rotate(-13deg)}to{clip-path:inset(0)}}@keyframes land{0%{opacity:0;transform:translate(7%,-13%) rotate(5deg) scale(.94)}65%{opacity:1;transform:translate(-.7%,1%) rotate(-1deg) scale(1.012)}100%{transform:none}}@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes ink{from{clip-path:polygon(0 105%,110% 75%,110% 110%,0 110%);transform:translateY(16%) rotate(-3deg)}to{clip-path:polygon(0 -5%,110% -35%,110% 110%,0 110%);transform:none}}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.opening{display:flex;flex-direction:column}.opening>.hero{margin:auto}.hero-meta{display:flex;justify-content:space-between;align-items:center;margin:0 5vw}.selection{background:#fff2df;padding:clamp(3rem,6vw,6rem) 5vw;border-top:1px solid}.selection h2{margin:0 auto 2.5rem;max-width:1450px}.selection h2 img{display:block;width:min(520px,91%)}.recipes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1450px;margin:auto;border-block:1px solid}.recipe{text-align:left;position:relative;padding:1.6rem 2vw 1.8rem}.recipe+.recipe{border-left:1px solid #860b123d}.recipe img{width:100%;height:auto;display:block;aspect-ratio:460/330;object-fit:contain;mix-blend-mode:multiply;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(transparent,#000 3%,#000 97%,transparent);mask-composite:intersect;transition:transform .3s}.recipe:hover img{transform:translateY(-4px) rotate(-1deg)}.details{display:grid;justify-items:start;gap:.45rem;padding-right:1rem}.details strong{font-size:clamp(1.4rem,2.4vw,2.6rem);letter-spacing:-.04em}.details b{padding:.2rem .65rem;background:var(--yellow);border-radius:2rem}.details span{line-height:1.35}.chev{position:absolute;right:3%;bottom:3rem;font-size:2rem}.selection>.cta{margin-top:1.6rem}fieldset{border:1px solid #860b1255}fieldset label{display:block;padding:8px 0}input{accent-color:var(--ink)}
+@media(max-width:700px){.opening{
+  min-height:calc(100vh - var(--mobile-header-height));
+  min-height:calc(100dvh - var(--mobile-header-height));
+}
+.opening>.hero{margin:0 auto}
+.selection h2{margin-bottom:1rem}.recipes{display:block}.recipe{width:100%;display:grid;grid-template-columns:42% 1fr;align-items:center;gap:.8rem;padding:1.1rem 0}.recipe+.recipe{border-left:0;border-top:1px solid #860b1255}.chev{right:0;bottom:44%}.details{gap:.35rem}.selection h2 img{max-width:360px}}
+/* La couleur du hero se prolonge dans la sélection. */
+.selection{border:0;background:linear-gradient(var(--paper),#fff2df 65%);padding-top:clamp(2rem,6vw,5rem)}
+.recipes,.recipe+.recipe{border:0}
+.selection h2{margin-bottom:clamp(1.2rem,3vw,2.5rem)}
+@media(max-width:700px){.recipes{display:grid;grid-template-columns:1fr;row-gap:1rem}.recipe{padding:.4rem 0}}
+@media(prefers-reduced-motion:no-preference){
+.motion .recipe img,.motion .recipe .details,.motion .recipe .chev,.motion .selection>.cta{opacity:0}
+.motion #choix:not(.seen) img { visibility: hidden; }
+.motion #choix.seen img { animation: menu-lettering .62s cubic-bezier(.22,.8,.24,1) both; }
+@keyframes menu-lettering {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(.45rem) rotate(-1deg); }
+  to { clip-path: inset(-4%); transform: none; }
+}
+.motion .recipe.seen img{animation:serve .78s cubic-bezier(.2,.8,.2,1) both}
+.motion .recipe.seen .details{animation:rise .65s both}
+.motion .selection>.cta.seen{animation:rise .65s .15s both}
+.motion .recipe.seen .chev{animation-delay:.32s}
+@keyframes print-in{from{opacity:0;transform:translateY(34px) rotate(-4deg);clip-path:inset(0 0 85% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
+@keyframes serve{from{opacity:0;transform:scale(1.045)}to{opacity:1;transform:none}}
+}
+
+a.cta{text-decoration:none}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+.formule {
+  color: var(--ink);
+  background: linear-gradient(#fff2df, var(--paper) 32%);
+  padding: clamp(2.5rem, 6vw, 6rem) 0;
+}
+.formule-inner {
+  width: min(100%, 1150px);
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+}
+.formule-art {isolation: isolate}
+.formule-art h2 {
+  position: relative;
+  z-index: 1;
+  width: 72%;
+  margin: 0 0 -14% 4%;
+  pointer-events: none;
+}
+.formule-art img {display: block; width: 100%; height: auto}
+.formule-scene {position: relative}
+.formule-scene .formule-note {position: absolute; top: 4.36%; right: 1%; width: 19.8%}
+.formule-offre {padding: 1rem 5vw 0}
+.formule-offre p {margin: 0; font-size: clamp(1.12rem, 4.3vw, 1.6rem); line-height: 1.35}
+.formule-prix strong {
+  display: block;
+  margin-top: .2rem;
+  font-size: clamp(2.1rem, 8vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+.formule-offre .cta {margin-top: 1rem; min-height: 48px}
+.formule-choix {display: grid; gap: .55rem}
+.formule-choix button {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem;
+  min-height: 48px; align-items: center; padding: .7rem .9rem;
+  border-radius: 6px; background: var(--yellow); text-align: left;
+}
+@media(max-width:700px) {
+  .formule-inner {display: block; max-width: 540px}
+  .formule-offre {padding: .45rem 5vw 0}
+}
+@media(prefers-reduced-motion:no-preference) {
+  .motion .formule-reveal {opacity: 0}
+  .motion #formule-titre.seen {animation: print-in .72s cubic-bezier(.2,.75,.2,1) both}
+  .motion .formule-scene.seen {animation: plate-in .8s cubic-bezier(.2,.8,.2,1) both}
+  .motion .formule-scene.seen .formule-note {animation: write .48s .42s both}
+  .motion .formule-offre.seen, .motion .formule-offre:focus-within {animation: rise .55s both}
+  @keyframes plate-in {
+    from {opacity: 0; transform: translateY(22px) rotate(-2deg) scale(.97)}
+    to {opacity: 1; transform: none}
+  }
+}
+
+.drinks {padding: clamp(2.5rem, 7vw, 5rem) 5vw; color: var(--ink)}
+.drinks-inner {max-width: 46rem; margin-inline: auto}
+.drinks h2 {
+  width: fit-content;
+  margin: 0 0 clamp(2rem, 7vw, 3rem);
+  font: italic 900 clamp(2.8rem, 10vw, 4.4rem)/.89 Arial, sans-serif;
+  letter-spacing: -.065em; transform: rotate(-4deg); transform-origin: left bottom;
+}
+.drinks-heading {display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: clamp(2rem, 7vw, 3rem)}
+.drinks-heading h2 {margin: 0}
+.drinks h2 span {display: block; white-space: nowrap}
+.drinks h2 span:last-child {margin-left: .62em}
+.drinks-replay {flex: 0 0 44px; height: 44px; padding: 0; border: 1px solid currentColor; border-radius: 50%; font-size: 1.15rem; line-height: 1}
+.drinks-replay span {display: inline-block; font-size: 1.3em}
+@media (max-width: 355px) {.drinks-heading h2 {font-size: 2.4rem}}
+.drinks-list, .drink-catalog {list-style: none; margin: 0; padding: 0}
+.drinks-list {display: grid; gap: clamp(1.5rem, 6.5vw, 2rem)}
+.drink-row {
+  display: grid;
+  grid-template-columns: clamp(6rem, 30vw, 9rem) minmax(0, 1fr);
+  grid-template-areas: "photo name" "photo price";
+  column-gap: clamp(1.2rem, 5vw, 2.5rem);
+  row-gap: .4rem;
+}
+.drink-photo {
+  grid-area: photo;
+  position: relative;
+  isolation: isolate;
+  height: clamp(5rem, 22vw, 6.5rem);
+}
+.drink-row .drink-name {grid-area: name; align-self: end}
+.drink-row .drink-price {grid-area: price; align-self: start}
+.drink-photo::before {
+  content: ''; position: absolute; inset: 18% 6% 10%;
+  background: var(--yellow); border-radius: .48rem; transform: skew(-10deg) rotate(-6deg);
+}
+.drink-photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.drink-name {font-size: clamp(1.12rem, 5.1vw, 1.6rem); font-weight: 750; letter-spacing: -.035em}
+.drink-price {
+  width: fit-content; background: var(--yellow); border-radius: 2em; padding: .26em .6em;
+  font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.drinks .cta {min-height: 48px; margin-top: clamp(2rem, 8vw, 3rem)}
+.drink-catalog {display: grid; gap: 1rem}
+.drink-catalog li {display: grid; grid-template-columns: 1fr auto; gap: .2rem .8rem; align-items: center}
+.drink-catalog small {grid-column: 1 / -1; font-size: 1rem}
+@media (prefers-reduced-motion: no-preference) {
+  .drinks.animating h2:not(.seen) span,
+  .drinks.animating .drink-row:not(.seen) > *,
+  .drinks.animating .cta:not(.seen):not(:focus-visible) {opacity: 0}
+
+  .drinks.animating h2.seen span {
+    animation: drinks-lettering .72s cubic-bezier(.2,.8,.2,1) var(--cue) both;
+  }
+  .drinks.animating h2.seen span:last-child {animation-delay: calc(var(--cue) + 170ms)}
+  .drink-row.seen .drink-photo::before {
+    transform-origin: left center;
+    animation: drinks-paper .48s cubic-bezier(.2,.75,.2,1) var(--cue) both;
+  }
+  .drink-row.seen .drink-photo img {
+    transform-origin: center 88%;
+    animation: drinks-land .78s cubic-bezier(.2,.75,.26,1) calc(var(--cue) + 100ms) both;
+  }
+  .drink-row.seen .drink-name {animation: drinks-name .52s ease-out calc(var(--cue) + 270ms) both}
+  .drink-row.seen .drink-price {
+    transform-origin: 20% center;
+    animation: drinks-stamp .48s cubic-bezier(.2,.8,.2,1) calc(var(--cue) + 440ms) both;
+  }
+  .drinks.animating .cta.seen {animation: rise .58s ease-out calc(var(--cue) + 240ms) both}
+  @keyframes drinks-lettering {
+    from {clip-path: inset(-15% 0 100%); transform: translate(-.2em,.27em) rotate(-3deg); opacity: 0}
+    to {clip-path: inset(-15% -8% -18%); transform: none; opacity: 1}
+  }
+  @keyframes drinks-paper {
+    from {transform: skew(-10deg) rotate(-12deg) scaleX(0)}
+    to {transform: skew(-10deg) rotate(-6deg) scaleX(1)}
+  }
+  @keyframes drinks-land {
+    0% {opacity: 0; transform: translate(17%,-13%) rotate(9deg) scale(.88)}
+    62% {opacity: 1; transform: translate(-1%,0) rotate(-3deg) scale(1.015)}
+    84% {transform: rotate(1deg)}
+    100% {opacity: 1; transform: none}
+  }
+  @keyframes drinks-name {from {opacity: 0; transform: translateX(-15px)} to {opacity: 1; transform: none}}
+  @keyframes drinks-stamp {
+    0% {opacity: 0; transform: scale(.72) rotate(-9deg)}
+    68% {opacity: 1; transform: scale(1.06) rotate(1deg)}
+    100% {opacity: 1; transform: none}
+  }
+}
+
+.restaurant {padding: clamp(2.4rem, 7vw, 5rem) 3vw clamp(3rem, 8vw, 6rem)}
+.restaurant-inner {max-width: 36rem; margin: auto}
+.restaurant h2 {margin: 0 2.4% .4rem; position: relative; z-index: 1}
+.restaurant h2 img {display: block; width: 100%; height: auto}
+.restaurant-scene {position: relative; isolation: isolate; padding-top: 5.2%}
+.restaurant-scene::before {
+  content: ''; position: absolute; inset: 0 2.6%; background: var(--yellow);
+  clip-path: polygon(0 14%,100% 0,100% 95%,0 100%);
+}
+.restaurant-frame {
+  position: relative; overflow: hidden;
+  clip-path: polygon(0 9.5%,100% 0,100% 100%,0 92%);
+}
+.restaurant-frame img {width: 100%; height: auto; display: block}
+.restaurant-info {margin: 1.25rem 2.4% .95rem}
+.restaurant-info p {margin: 0; line-height: 1.4}
+.restaurant-info strong {font-size: clamp(1.25rem, 5.5vw, 1.8rem); letter-spacing: -.035em}
+.restaurant-info p + p {margin-top: .22rem}
+.restaurant .cta {min-height: 48px; margin-inline-start: 2.4%}
+.map-link {color: var(--ink); font-weight: 700; display: inline-block; padding-block: .65rem}
+@media (prefers-reduced-motion: no-preference) {
+  .restaurant.animating .visit-step:not(.seen):not(:focus-visible) {opacity: 0}
+  .restaurant.animating h2.seen img {animation: print-in .74s cubic-bezier(.2,.75,.2,1) var(--cue) both}
+  .restaurant-scene.seen::before {animation: visit-paper .63s cubic-bezier(.2,.8,.2,1) var(--cue) both}
+  .restaurant-scene.seen .restaurant-frame {animation: visit-uncover 1.02s cubic-bezier(.24,.72,.19,1) calc(var(--cue) + 180ms) both}
+  .restaurant-scene.seen img {animation: visit-settle 1.3s ease-out calc(var(--cue) + 160ms) both; transform-origin: 78% 67%}
+  .restaurant-info.seen {animation: rise .56s ease-out calc(var(--cue) + 380ms) both}
+  .restaurant .cta.seen {animation: rise .5s ease-out calc(var(--cue) + 510ms) both}
+  @keyframes visit-paper {from {clip-path: polygon(0 14%,0 14%,0 100%,0 100%)}}
+  @keyframes visit-uncover {from {clip-path: polygon(0 9.5%,100% 0,100% 0,0 9.5%)}}
+  @keyframes visit-settle {from {transform: scale(1.085)} to {transform: none}}
+}
+
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(1.5rem, 5vw, 3rem) 5vw max(2rem, env(safe-area-inset-bottom));
+}
+.footer-inner {
+  width: min(100%, 40rem);
+  margin-inline: auto;
+}
+.footer-links {
+  position: static;
+  display: grid;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.footer-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+  padding: .7rem .15rem;
+  border-bottom: 1px solid currentColor;
+  font-size: clamp(1.4rem, 6.5vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  color: inherit;
+  text-decoration: none;
+}
+.footer-links span { font-weight: 400; line-height: 1; }
+.footer-brand { margin-block: clamp(2rem, 10vw, 3.75rem) clamp(2.75rem, 12vw, 4.75rem); }
+.footer-brand img { display: block; width: 100%; height: auto; }
+.site-footer p { margin: 0; text-align: center; font-size: clamp(.875rem, 3.8vw, 1.1rem); line-height: 1.5; font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) {
+  .site-footer.arrived .footer-links a { animation: footer-rise .45s both; }
+  .site-footer.arrived .footer-links a:nth-child(2) { animation-delay: 90ms; }
+  .site-footer.arrived .footer-brand { animation: footer-stamp .52s .18s both; }
+  .footer-links span { transition: transform .18s ease-out; }
+  .footer-links a:is(:hover, :focus-visible) span { transform: translateX(.2rem); }
+  @keyframes footer-rise { from { opacity: .2; transform: translateY(.5rem); } }
+  @keyframes footer-stamp {
+    from { opacity: 0; transform: translateY(.8rem) scale(1.045) rotate(-1deg); }
+    75% { opacity: 1; transform: scale(.992); }
+    to { transform: none; }
+  }
+}
+
+/* Keep the handwritten label's entrance and idle motion on separate layers. */
+.hero .note img {
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 48% 100%, 0 100%);
+  transform-origin: 17% 66%;
+}
+.double-sketch {
+  display: block;
+  position: absolute;
+  right: 2%;
+  bottom: -3%;
+  width: clamp(5rem, 23%, 7rem);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(1px 1px 0 var(--paper)) drop-shadow(-1px -1px 0 var(--paper));
+}
+.sketch-bun { transform-origin: 138px 90px; }
+.sketch-dashes { opacity: 0; }
+@media (max-width: 700px) {
+  :root { --mobile-header-height: 60px; }
+  .opening { overflow-x: clip; }
+  .opening > .hero {
+    flex: 1;
+    justify-content: space-around;
+    padding-block: clamp(14px, 2.4dvh, 25px) max(16px, env(safe-area-inset-bottom));
+  }
+  .hero .art { width: min(100%, 53dvh, 490px); flex: none; }
+  .hero .copy { width: min(100%, 510px); margin-inline: auto; padding-top: 1.4rem; }
+  .hero .copy h1 { margin-bottom: clamp(.5rem, 2dvh, 1rem); }
+  .hero .cta { min-height: 48px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero.play { --loop: 8s; --after-intro: 2.05s; }
+  .hero.play .note img { animation: double-nod var(--loop) ease-in-out var(--after-intro) infinite; }
+  .hero.play .double-sketch { animation: rise .45s 1.65s both; }
+  .hero.play .sketch-bun { animation: lift-bun var(--loop) ease-in-out var(--after-intro) infinite both; }
+  .hero.play .sketch-extra { animation: slide-steak var(--loop) ease-in-out var(--after-intro) infinite both; }
+  .hero.play .sketch-dashes { animation: pressure-lines var(--loop) ease-out var(--after-intro) infinite both; }
+  @keyframes double-nod {
+    0%, 50%, 100% { transform: none; }
+    25% { transform: translate(3px, 2px) rotate(3deg); }
+  }
+  @keyframes lift-bun {
+    0%, 50%, 97%, 100% { transform: translate(0, 65px) rotate(15deg); }
+    56%, 59%, 89% { transform: translate(0, 0) rotate(-2deg); }
+    64% { transform: translate(0, 39px) rotate(15deg); }
+    67%, 82% { transform: translate(0, 35px) rotate(14deg); }
+  }
+  @keyframes slide-steak {
+    0%, 53%, 96%, 100% { opacity: 0; transform: translate(31px, -6px); }
+    57%, 90% { opacity: 1; transform: translate(0, 0); }
+    62%, 84% { opacity: 1; transform: translate(-99px, 14px); }
+  }
+  @keyframes pressure-lines {
+    0%, 61%, 71%, 100% { opacity: 0; transform: translate(6px, 41px); }
+    65% { opacity: 1; transform: translate(2px, 34px); }
+  }
+}
+
+/* Let the lettering of the selection take over as the opening scrolls away. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .opening { view-timeline-name: --hero-exit; }
+    .hero .art {
+      animation: leave-menu-hero linear both;
+      animation-timeline: --hero-exit;
+      animation-range: exit 0% exit 65%;
+    }
+    @keyframes leave-menu-hero {
+      from { opacity: 1; }
+      to { opacity: .4; }
+    }
+  }
+}
+
+@font-face {
+  font-family: "Menu Condensed";
+  src: url(assets/condensed-bold.woff) format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+.hero-intro {
+  max-width: 32ch;
+  margin: 0 0 1.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.24rem);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.interlude {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  overflow: clip;
+  padding-bottom: clamp(3.75rem, 9vw, 7rem);
+  background: var(--paper);
+  font-family: "Menu Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.interlude-ribbon { background: var(--ink); color: var(--paper); font-size: clamp(1.15rem, 3.8vw, 1.55rem); }
+.interlude-ribbon > div, .interlude-marquee > div {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  line-height: 1;
+}
+.interlude-ribbon > div {
+  padding-block: .43em;
+}
+.ribbon-repeat {
+  display: flex;
+  justify-content: space-around;
+  min-width: 100vw;
+}
+.interlude i { color: var(--yellow); font-style: normal; margin-inline: .4em; }
+.interlude-marquee { margin-top: clamp(2.3rem, 9vw, 4.8rem); font-size: clamp(3.35rem, 13.5vw, 7.4rem); letter-spacing: -.045em; }
+.interlude-marquee > div { transform: translateX(calc(-.65em - var(--type-shift, 0px))); }
+.interlude-stickers {
+  display: block;
+  width: min(71%, 20rem);
+  height: auto;
+  margin: clamp(2rem, 7vw, 3.7rem) auto 0;
+  overflow: visible;
+  filter: drop-shadow(0 4px 3px rgb(71 41 16 / 15%));
+}
+.interlude-copy {
+  width: min(88%, 36rem);
+  margin: clamp(1.75rem, 6vw, 3rem) auto 0;
+  text-align: center;
+  text-wrap: balance;
+  font-size: clamp(1.25rem, 5.25vw, 2rem);
+  line-height: 1.17;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .interlude-copy [data-pending] { color: #856959; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero.play .hero-intro { animation: rise .46s 1.35s both; }
+  .hero.play .cta { animation-delay: 1.65s; }
+  .ribbon-track { animation: ribbon-loop 24s linear infinite; }
+  @keyframes ribbon-loop { to { transform: translateX(-50%); } }
+
+  .seal, .seal-face { transform-box: fill-box; transform-origin: center; }
+  .seal-smashe { --beat: 0ms; --angle: -7deg; }
+  .seal-grille { --beat: 180ms; --angle: 7deg; }
+  .seal-fondu { --beat: 360ms; --angle: -4deg; }
+  .interlude-stickers.awaiting .seal { opacity: 0; }
+  .interlude-stickers.arrived .seal {
+    animation: seal-land .62s cubic-bezier(.2,.8,.25,1) var(--beat) both;
+  }
+  .interlude-stickers.arrived .seal-face {
+    animation: seal-rock 5s ease-in-out calc(1.6s + var(--beat) * 3) infinite;
+  }
+  @keyframes seal-land {
+    from { opacity: 0; transform: translateY(-12px) rotate(var(--angle)) scale(1.1); }
+    65% { opacity: 1; transform: translateY(1px) scale(.97); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes seal-rock {
+    0%, 26%, 100% { transform: none; }
+    13% { transform: translateY(-3px) rotate(var(--angle)); }
+  }
+}
+
+/* Product photography and captions share one tappable surface. */
+.selection .recipes { gap: clamp(1.5rem, 3vw, 3rem); }
+.selection .recipe {
+  display: flex; flex-direction: column; align-items: stretch; gap: 0;
+  color: var(--ink); text-decoration: none; padding: 0; overflow: hidden;
+  background: #fffdf8; border-radius: 1rem; border: 1px solid #a77864; box-shadow: 0 3px 0 #dac4af; scroll-margin-top: 1rem;
+}
+.recipe-photo {
+  display: grid; place-items: center; overflow: hidden;
+  background: #f6ead7; padding: clamp(1rem, 4%, 2.5rem);
+}
+.recipe-photo img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.recipe .details {
+  display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center;
+  padding: clamp(1rem, 3vw, 1.5rem); gap: .5rem .6rem;
+}
+.recipe .details strong { font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.05; }
+
+.recipe .details b { background: var(--yellow); padding: .32em .7em; color: #46260d; font-size: .94rem; white-space: nowrap; }
+.recipe .details > span { grid-column: 1/-1; color: #564537; }
+.selection .recipe .details strong { color: var(--ink); }
+.selection .recipe .recipe-photo { background: transparent; }
+.selection .recipe .recipe-photo img { mix-blend-mode: normal; }
+@media (hover:hover) { .recipe:hover strong { text-decoration: underline; text-underline-offset: .15em; } }
+.recipe:active { transform: scale(.992); }
+.product-page header { flex-shrink: 0; }
+.product-page header a { color: inherit; font-weight: 700; }
+.product {
+  width: min(90%, 63rem); margin: clamp(2rem, 6vw, 5rem) auto;
+  display: grid; align-items: center; grid-template-columns: 1.15fr 1fr; gap: clamp(2rem,5vw,5rem);
+}
+.product .recipe-photo { border-radius: 1rem; }
+.product h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin: 0; letter-spacing: -.055em; }
+.product p { line-height: 1.5; }
+.product fieldset { margin: 1.5rem 0 0; border-radius: .6rem; padding: .8rem 1rem; }
+.product legend { font-weight: 700; }
+@media (max-width:700px) {
+  .selection { padding-inline: 5vw; }
+  .selection .recipes { max-width: 32rem; }
+  .product { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+
+/* The angled paper sits behind the price so the numerals stay level. */
+.recipe .details b, .drink-price {
+  position: relative; isolation: isolate; background: transparent; border-radius: 0;
+}
+.recipe .details b::before, .drink-price::before {
+  content: ""; position: absolute; inset: 0; background: var(--yellow);
+  transform: rotate(-3deg); z-index: -1;
+}
+@media (max-width:700px) {
+  :root {
+    --chapter-space: clamp(4.5rem,12svh,7rem);
+    --group-space: clamp(2.5rem,7svh,4rem);
+    --action-space: clamp(1.4rem,3.6svh,2rem);
+  }
+  .interlude-marquee { margin-top: var(--group-space); }
+  .interlude-stickers { margin-top: var(--group-space); }
+  .interlude-copy { margin-top: clamp(2.5rem,6svh,3.5rem); }
+  .interlude { padding-bottom: var(--group-space); }
+  main > :is(.selection,.formule,.drinks,.restaurant,.avis) { padding-block: var(--chapter-space); }
+  main > .selection { padding-top: var(--group-space); }
+  .selection h2, .drinks-heading { margin-bottom: var(--group-space); }
+  .selection .recipes { row-gap: clamp(3.5rem,10svh,6rem); }
+  .recipe .recipe-photo { min-height: clamp(16rem,44svh,25rem); padding: 2rem 8%; background: transparent; }
+  .recipe .details { padding: 1rem 6% 2rem; row-gap: .65rem; }
+  .formule-offre { padding-top: var(--group-space); }
+  .formule-art h2 { margin-bottom: -7%; }
+  .formule-offre .cta, .drinks .cta { margin-top: var(--action-space); }
+  .drinks-list { row-gap: clamp(2.25rem,6svh,3.5rem); }
+  .restaurant h2 { margin-bottom: var(--action-space); }
+  .restaurant-info { margin-block: var(--group-space) var(--action-space); }
+  .avis .ticket-scene { margin-top: var(--group-space); }
+  .avis .ticket-controls { margin-top: var(--action-space); }
+  .site-footer { padding-top: var(--group-space); }
+  .footer-links a { min-height: 4rem; }
+  .footer-brand { margin-block: var(--group-space); }
+}
+@media (prefers-reduced-motion:no-preference) {
+  .motion .selection .recipe { opacity: 0; }
+  .motion .selection .recipe.seen { animation: card-settle .64s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) both; }
+  .motion .selection .recipe.seen img { animation: recipe-land .58s calc(var(--entry-delay,0ms) + 70ms) cubic-bezier(.22,.8,.24,1) both; }
+  .motion .selection .recipe.seen .details { animation: rise .45s calc(var(--entry-delay,0ms) + 160ms) both; }
+  @keyframes card-settle {
+    from { opacity: 0; transform: translateY(.85rem) rotate(-.6deg); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes recipe-land {
+    from { opacity: 0; transform: translate(2%,-3%) rotate(1deg); }
+    to { opacity: 1; transform: none; }
+  }
+}
+.selection > .cta { margin-top: clamp(1.75rem,5svh,3rem); }
+.smash-list { max-width: 40rem; margin: 4rem auto; padding-inline: 5vw; }
+.smash-list h1 { font-size: clamp(2.5rem,7vw,4.5rem); line-height: 1; }
+.smash-list a { display: block; padding: 1.4rem 0; border-bottom: 1px solid #860b1235; text-decoration: none; color: inherit; }
+.smash-list a strong { font-size: 1.4rem; }
+.smash-list a span { display:block; margin-top:.45rem; }
+.smash-list a:hover strong { text-decoration: underline; }

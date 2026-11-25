@@ -1,0 +1,61 @@
+.avis {
+  padding: clamp(3rem, 8vw, 6rem) 0 2rem;
+  overflow: clip;
+}
+.avis h2 {
+  position: relative;
+  z-index: 1;
+  width: min(90%, 42rem);
+  margin: 0 auto .25rem;
+}
+.avis h2 img { display: block; width: 100%; }
+.ticket-scene {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: center;
+  padding: 2.5rem 1.25rem 2rem;
+  touch-action: pan-y pinch-zoom;
+}
+.ticket-scene::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: #ffcd2c;
+  transform: skewY(-4deg);
+}
+.ticket-wrap {
+  width: min(83%, 23rem);
+  filter: drop-shadow(.2rem .45rem .28rem #65420d46);
+  transform: rotate(-2deg);
+}
+.ticket {
+  padding: 1.25rem clamp(1rem, 5vw, 2rem) 1.4rem;
+  color: #2d1913;
+  background: linear-gradient(#fff7efc4,#fff7efc4), url(assets/papier-ticket.webp) 0 0 / 9rem auto;
+  font: 1rem/1.35 "Courier New", monospace;
+  mask: linear-gradient(#000 0 0) top / 100% calc(100% - 5px) no-repeat,
+        conic-gradient(from 135deg at 50% 0, #000 90deg, transparent 0) bottom / 10px 5px repeat-x;
+}
+.ticket-logo { display: block; width: 6.6rem; height: auto; margin: 0 auto 1rem; }
+.ticket-order { margin: 0; padding-bottom: .55rem; border-bottom: 1px dashed #76594c; }
+.ticket blockquote { margin: 1rem 0 .65rem; min-height: 6lh; font-size: clamp(1.07rem, 4.7vw, 1.42rem); font-weight: 700; line-height: 1.25; }
+.ticket-sign { margin: 0; color: var(--ink); font: italic 1.7rem/1.2 "Brush Script MT", "Segoe Print", cursive; }
+.ticket-foot { display: flex; justify-content: space-between; gap: .5rem; align-items: end; margin-top: 1.35rem; }
+.ticket-foot small { font-size: .75rem; }
+.ticket-foot span { width: 3.2rem; height: 1.05rem; background: repeating-linear-gradient(90deg,#482e23 0 1px,transparent 1px 3px,#482e23 3px 6px,transparent 6px 7px,#482e23 7px 9px,transparent 9px 12px); }
+.ticket-controls { display: flex; align-items: center; justify-content: center; gap: .55rem; margin: 1.3rem auto 0; }
+.ticket-controls[hidden] { display: none; }
+.ticket-controls button { width: 44px; height: 44px; font-size: 1.35rem; border-radius: 50%; }
+.ticket-controls button:hover { background: #ffda725e; }
+.ticket-index { font: .875rem/1.2 "Courier New", monospace; }
+@media (prefers-reduced-motion: no-preference) {
+  .ticket-wrap.printing { animation: print-ticket .85s cubic-bezier(.2,.72,.2,1) both; }
+  .ticket.swap { animation: swap-ticket .26s ease-out; }
+  @keyframes print-ticket {
+    from { clip-path: inset(0 0 100%); transform: translateY(-1rem) rotate(0deg); }
+    to { clip-path: inset(-6%); transform: translateY(0) rotate(-2deg); }
+  }
+  @keyframes swap-ticket { from { opacity: .3; transform: translateX(var(--slide, 8px)); } }
+}

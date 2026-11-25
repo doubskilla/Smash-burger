@@ -1,0 +1,162 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fff6e8"><title>Smash Burger — Simple ou double ?</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="avis.css"></head><body>
+<header><img src="assets/logo.png" alt="Smash Burger" width="108" height="55"><button class="menu" aria-label="Ouvrir le menu" aria-controls="nav" aria-expanded="false"><i></i><i></i><i></i></button><nav id="nav" hidden><button id="replay">Rejouer l’intro</button><button data-open="carte">La carte</button><button data-open="lieu">Le restaurant</button></nav></header>
+<main><div class="opening"><section class="hero" aria-labelledby="titre"><div class="art"><div class="panel"></div><img class="burger" src="assets/burger.webp" alt="Le Double, deux steaks grillés et du cheddar sous un pain brioché."><span class="note"><img src="assets/note.png" alt="Le Double" width="300" height="148"></span><svg class="arrow" viewBox="0 0 84 132" aria-hidden="true"><path pathLength="1" d="M23 4 Q-6 69 60 114 M35 108 L61 117 L57 92"/></svg>
+  <svg class="double-sketch" viewBox="0 0 366 252" aria-hidden="true" focusable="false">
+    <defs>
+      <image id="sketch-art" href="assets/dessin-double.webp" width="366" height="252"/>
+      <clipPath id="bun-shape"><path d="M38 94Q52 43 128 18Q223 -4 237 70L229 75 55 134 37 133Z"/></clipPath>
+      <clipPath id="extra-shape"><path d="M158 113L179 96 233 84 311 88 314 139 218 149 158 148Z"/></clipPath>
+      <clipPath id="base-shape"><path d="M30 159L107 148 160 148 238 154 245 244 30 244Z"/></clipPath>
+      <clipPath id="dash-shape"><path d="M8 50L38 47 37 75 5 75ZM27 18L48 20 55 43 42 49ZM54 4L72 5 76 31 62 38Z"/></clipPath>
+    </defs>
+    <use href="#sketch-art" clip-path="url(#base-shape)"/>
+    <g class="sketch-extra"><use href="#sketch-art" clip-path="url(#extra-shape)"/></g>
+    <g class="sketch-bun"><use href="#sketch-art" clip-path="url(#bun-shape)"/></g>
+    <g class="sketch-dashes"><use href="#sketch-art" clip-path="url(#dash-shape)"/></g>
+  </svg>
+</div>
+<div class="copy"><h1 id="titre"><span class="sr">Simple ou double ?</span><img src="assets/title.png" alt=""></h1>
+  <p class="hero-intro">Du bœuf saisi sur la plaque, du cheddar qui fond et des pickles qui croquent.</p>
+  <a class="cta" href="#burgers">Voir la carte <span aria-hidden="true">→</span></a></div></section>
+</div>
+<section class="interlude" id="sur-la-plaque" aria-label="Sur la plaque">
+  <div class="interlude-ribbon" aria-hidden="true">
+    <div class="ribbon-track">
+      <div class="ribbon-repeat"><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span></div>
+      <div class="ribbon-repeat"><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span><span>Smash <i>✦</i></span></div>
+    </div>
+  </div>
+  <div class="interlude-marquee" aria-hidden="true"><div><span>Bords grillés <i>✦</i> Cheddar fondu <i>✦</i> Pickles <i>✦</i> </span><span>Bords grillés <i>✦</i> Cheddar fondu <i>✦</i> Pickles <i>✦</i> </span><span>Bords grillés <i>✦</i> Cheddar fondu <i>✦</i> Pickles <i>✦</i> </span></div></div>
+  <svg class="interlude-stickers" viewBox="0 0 460 277" role="img" aria-label="Smashé, grillé, fondu.">
+    <defs>
+      <image id="label-sheet" href="assets/stickers-smash.webp" width="460" height="277" preserveAspectRatio="none"/>
+      <clipPath id="label-smashe"><path d="M33 116C30 82 69 49 118 33C167 17 209 29 219 59C234 96 197 132 148 149C94 168 44 157 35 129Z"/></clipPath>
+      <clipPath id="label-grille"><path d="M241 73C242 41 272 24 316 28C364 29 413 52 429 83C439 103 434 125 414 139C389 157 347 155 310 144C265 130 238 105 241 73Z"/></clipPath>
+      <clipPath id="label-fondu"><path d="M133 191C135 159 175 138 221 134C275 128 320 147 329 176C341 211 305 241 258 248C211 256 164 249 144 228C135 218 130 205 133 191Z"/></clipPath>
+    </defs>
+    <g class="seal seal-smashe"><g class="seal-face"><use href="#label-sheet" clip-path="url(#label-smashe)"/></g></g>
+    <g class="seal seal-grille"><g class="seal-face"><use href="#label-sheet" clip-path="url(#label-grille)"/></g></g>
+    <g class="seal seal-fondu"><g class="seal-face"><use href="#label-sheet" clip-path="url(#label-fondu)"/></g></g>
+  </svg>
+  <p class="interlude-copy">On pose le steak sur la plaque bien chaude. On presse, les bords grillent. Un coup de spatule, et hop, dans le pain brioché.</p>
+</section>
+<section class="selection" id="burgers" aria-labelledby="choix"><h2 id="choix"><span class="sr">Kaay, choisis ton smash.</span><img src="assets/kaay.png" alt=""></h2><div class="recipes">
+  <a class="recipe" id="burger-original" href="burger-original.html" data-recipe="original">
+    <span class="recipe-photo"><img src="assets/original.webp" loading="lazy" alt="" width="460" height="330"></span>
+    <span class="details"><strong>L’Original</strong><b>3 500 FCFA</b><span>Cheddar, pickles, oignons.</span></span>
+  </a>
+  <a class="recipe" id="burger-double" href="burger-double.html" data-recipe="double">
+    <span class="recipe-photo"><img src="assets/double.webp" loading="lazy" alt="" width="460" height="330"></span>
+    <span class="details"><strong>Le Double</strong><b>4 500 FCFA</b><span>Deux steaks, double cheddar.</span></span>
+  </a>
+  <a class="recipe" id="burger-piment" href="burger-piment.html" data-recipe="piment">
+    <span class="recipe-photo"><img src="assets/piment.webp" loading="lazy" alt="" width="460" height="330"></span>
+    <span class="details"><strong>Le Piment</strong><b>4 000 FCFA</b><span>Piments et sauce relevée.</span></span>
+  </a>
+</div><a class="cta" href="smashs.html">Voir les autres smashs</a></section>
+<section class="formule" aria-labelledby="formule-titre">
+  <div class="formule-inner">
+    <div class="formule-art">
+      <h2 id="formule-titre" class="formule-reveal">
+        <span class="sr">Et avec ça ?</span>
+        <img src="assets/formule-titre.png" alt="" width="739" height="384" loading="lazy">
+      </h2>
+      <div class="formule-scene formule-reveal">
+        <img class="formule-photo" src="assets/formule-repas.webp" alt="Un smash burger, un cornet de frites et un bissap glacé." width="1024" height="922" loading="lazy">
+        <img class="formule-note" src="assets/formule-bissap.png" alt="" width="203" height="217" loading="lazy">
+      </div>
+    </div>
+    <div class="formule-offre formule-reveal">
+      <p>Frites + boisson au choix</p>
+      <p class="formule-prix"><strong>+ 1 500 FCFA</strong> en plus du burger</p>
+      <button class="cta" data-open="composer">Composer mon menu <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</section>
+<section class="drinks" id="boissons" aria-labelledby="titre-boissons">
+  <div class="drinks-inner">
+    <div class="drinks-heading">
+      <h2 id="titre-boissons"><span>Les boissons</span> <span>à la carte</span></h2>
+      <button type="button" class="drinks-replay" aria-label="Rejouer les animations des boissons" title="Rejouer l’animation" hidden><span aria-hidden="true">↻</span></button>
+    </div>
+    <ul class="drinks-list">
+      <li class="drink-row" data-description="Infusion d’hibiscus.">
+        <span class="drink-photo"><img src="assets/boisson-bissap.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="drink-name">Bissap</span>
+        <span class="drink-price">700 FCFA</span>
+      </li>
+      <li class="drink-row" data-description="Boisson au fruit du baobab.">
+        <span class="drink-photo"><img src="assets/boisson-bouye.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="drink-name">Bouye</span>
+        <span class="drink-price">800 FCFA</span>
+      </li>
+      <li class="drink-row" data-description="Jus de ditakh.">
+        <span class="drink-photo"><img src="assets/boisson-ditakh.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="drink-name">Ditakh</span>
+        <span class="drink-price">800 FCFA</span>
+      </li>
+      <li class="drink-row" data-description="Eau plate en bouteille.">
+        <span class="drink-photo"><img src="assets/boisson-eau.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="drink-name">Eau</span>
+        <span class="drink-price">500 FCFA</span>
+      </li>
+      <li class="drink-row" data-description="Boisson au citron.">
+        <span class="drink-photo"><img src="assets/boisson-citronnade.webp" alt="" loading="lazy" decoding="async"></span>
+        <span class="drink-name">Citronnade</span>
+        <span class="drink-price">700 FCFA</span>
+      </li>
+    </ul>
+    <button class="cta" data-open="supplements">Tous les suppléments <span aria-hidden="true">→</span></button>
+  </div>
+</section>
+<section class="restaurant" id="restaurant" aria-labelledby="restaurant-titre">
+  <div class="restaurant-inner">
+    <h2 id="restaurant-titre" class="visit-step"><span class="sr">Sur place ou à emporter ?</span>
+      <img src="assets/restaurant-titre.png" width="862" height="300" loading="lazy" alt="">
+    </h2>
+    <div class="restaurant-scene visit-step">
+      <div class="restaurant-frame">
+        <img src="assets/restaurant-comptoir.webp" width="887" height="934" loading="lazy" alt="Au comptoir, un sac Smash Burger prêt à emporter. À côté, des tabourets jaunes pour manger sur place.">
+      </div>
+    </div>
+    <div class="restaurant-info visit-step">
+      <p><strong>Mermoz–Sacré-Cœur, Dakar</strong></p>
+      <p>Du mardi au dimanche · 12 h – 23 h</p>
+    </div>
+    <button class="cta visit-step" data-open="lieu">Comment venir ? <span aria-hidden="true">→</span></button>
+  </div>
+</section><section class="avis" id="avis" aria-labelledby="avis-titre">
+  <h2 id="avis-titre"><span class="sr">Après la dernière bouchée</span><img src="assets/avis-titre.png" alt="" loading="lazy"></h2>
+  <div class="ticket-scene">
+    <div class="ticket-wrap">
+      <article class="ticket" aria-live="polite" aria-atomic="true">
+        <img class="ticket-logo" src="assets/logo.png" alt="Smash Burger" width="108" height="55">
+        <p class="ticket-order">1 × Le Double</p>
+        <blockquote>« Les bords du steak croustillent encore. J’ai fini mes frites dans le sachet en rentrant. »</blockquote>
+        <p class="ticket-sign">Aïssatou</p>
+        <div class="ticket-foot"><small>Avis de démonstration</small><span aria-hidden="true"></span></div>
+      </article>
+    </div>
+  </div>
+  <div class="ticket-controls" role="group" aria-label="Parcourir les avis" hidden>
+    <button type="button" aria-label="Avis précédent">←</button>
+    <span class="ticket-index">1 / 3</span>
+    <button type="button" aria-label="Avis suivant">→</button>
+  </div>
+</section>
+</main>
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+    <nav class="footer-links" aria-label="Navigation de pied de page">
+      <a href="#burgers">La carte <span aria-hidden="true">→</span></a>
+      <a href="#restaurant">Le restaurant <span aria-hidden="true">→</span></a>
+    </nav>
+    <div class="footer-brand">
+      <img src="assets/footer-logo.png" width="1009" height="572" alt="Smash Burger" loading="lazy">
+    </div>
+    <p>Restaurant fictif · Site conçu par NextStep.</p>
+  </div>
+</footer>
+<template id="supplements"><h2>Les suppléments</h2><p>Boissons à l’unité</p><ul class="drink-catalog"></ul></template>
+<template id="composer"><h2>Choisis ton burger</h2><p>En menu avec frites et boisson au choix.</p><div class="formule-choix"></div></template><template id="original"><h2>L’Original</h2><p>Cheddar, pickles, oignons.</p><fieldset><legend>Choisir une formule</legend><label><input type="radio" name="formule" checked> Burger seul · 3 500 FCFA</label><label><input type="radio" name="formule" value="menu"> En menu · 5 000 FCFA</label></fieldset></template><template id="double"><h2>Le Double</h2><p>Deux steaks, double cheddar.</p><fieldset><legend>Choisir une formule</legend><label><input type="radio" name="formule" checked> Burger seul · 4 500 FCFA</label><label><input type="radio" name="formule" value="menu"> En menu · 6 000 FCFA</label></fieldset></template><template id="piment"><h2>Le Piment</h2><p>Piments et sauce relevée.</p><fieldset><legend>Choisir une formule</legend><label><input type="radio" name="formule" checked> Burger seul · 4 000 FCFA</label><label><input type="radio" name="formule" value="menu"> En menu · 5 500 FCFA</label></fieldset></template><dialog id="fiche"><button class="close" aria-label="Fermer">×</button><div id="contenu"></div></dialog>
+<template id="carte"><h2>La carte</h2><dl><dt>L’Original</dt><dd>3 500 FCFA</dd><dt>Le Double</dt><dd>4 500 FCFA</dd><dt>Le Piment</dt><dd>4 000 FCFA</dd></dl></template><template id="lieu"><h2>Le restaurant</h2><p>Mermoz–Sacré-Cœur, Dakar</p><p>Du mardi au dimanche, de 12 h à 23 h.</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Mermoz-Sacr%C3%A9-C%C5%93ur%2C+Dakar%2C+S%C3%A9n%C3%A9gal">Voir le quartier sur la carte</a></template><script src="hero.js"></script><script src="avis.js"></script><script src="interlude.js"></script></body></html>
