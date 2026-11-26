@@ -61,38 +61,73 @@ document.querySelectorAll('[data-open]').forEach(button => button.onclick = () =
 dialog.querySelector('.close').onclick = () => dialog.close();
 dialog.onclose = () => opener?.focus();
 const selection = document.querySelector('.selection');
-if ('IntersectionObserver' in window) {
-  const title = selection.querySelector('#choix');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+{
+  const title = selection.querySelector('h2');
+  const cards = [...selection.querySelectorAll('.recipe')];
+  const targets = [title, ...cards, selection.querySelector('.cta')];
+  let frame = 0;
+  let previousScroll = window.scrollY;
   let titleStart = null;
+  let armed = false;
+
+  function updateSelection(now) {
+    frame = 0;
+    const height = window.innerHeight;
+    const bounds = selection.getBoundingClientRect();
+    const scrollingUp = window.scrollY < previousScroll;
+    previousScroll = window.scrollY;
+    if (motionPreference.matches || bounds.bottom <= 0 || bounds.top >= height) {
+      if (armed) {
+        titleStart = null;
+        targets.forEach(target => target.classList.remove('seen'));
+        selection.classList.remove('selection-motion');
+        armed = false;
+      }
+      return;
+    }
+
+    const incoming = targets.filter(target => {
+      const rect = target.getBoundingClientRect();
+      return !target.classList.contains('seen') && rect.bottom > 0 && rect.top < height - 24;
+    });
+    if (scrollingUp) incoming.reverse();
+
+    incoming.forEach((target, index) => {
+      if (target === title) titleStart = now;
+      const overlap = !scrollingUp && target === cards[0] && titleStart !== null
+        ? Math.max(0, 300 - (now - titleStart)) : 0;
+      const delay = cards.includes(target) ? Math.max(overlap, index * 55) : 0;
+      target.style.setProperty('--entry-delay', delay + 'ms');
+      target.classList.add('seen');
+    });
+    selection.classList.add('selection-motion');
+    armed = true;
+  }
+
+  function scheduleSelection() {
+    if (!frame) frame = requestAnimationFrame(updateSelection);
+  }
+
+  window.addEventListener('scroll', scheduleSelection, {passive: true});
+  window.addEventListener('resize', scheduleSelection);
+  motionPreference.addEventListener('change', scheduleSelection);
+  scheduleSelection();
+}
+
+if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
       if (entry.intersectionRatio < .12) continue;
-      const target = entry.target;
-      if (target === title || (target.matches('.recipe') && title.getBoundingClientRect().bottom > 0)) {
-        titleStart ??= performance.now();
-        title.classList.add('seen');
-      }
-      if (target.matches('.recipe')) {
-        const delay = titleStart === null ? 0 : Math.max(0, 340 - (performance.now() - titleStart));
-        target.style.setProperty('--entry-delay', delay + 'ms');
-      }
-      target.classList.add('seen');
-      if (!selection.contains(target)) observer.unobserve(target);
+      entry.target.classList.add('seen');
+      observer.unobserve(entry.target);
     }
   }, {rootMargin:'0px 0px -8% 0px', threshold:.12});
-  document.querySelectorAll('#choix, .recipe, .selection > .cta, .formule-reveal').forEach(target => observer.observe(target));
-  const resetSelection = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) {
-      titleStart = null;
-      selection.querySelectorAll('.seen').forEach(item => item.classList.remove('seen'));
-    }
-  });
-  resetSelection.observe(selection);
-  selection.addEventListener('focusin', event => event.target.closest('.recipe, .cta')?.classList.add('seen'));
+  document.querySelectorAll('.formule-reveal').forEach(target => observer.observe(target));
   document.documentElement.classList.add('motion');
 }
 
-const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 function animateSection(section, selector, replayButton) {
   const targets = section.querySelectorAll(selector);
   let observer;

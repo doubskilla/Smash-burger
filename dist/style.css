@@ -15,19 +15,13 @@
 .selection h2{margin-bottom:clamp(1.2rem,3vw,2.5rem)}
 @media(max-width:700px){.recipes{display:grid;grid-template-columns:1fr;row-gap:1rem}.recipe{padding:.4rem 0}}
 @media(prefers-reduced-motion:no-preference){
-.motion .recipe img,.motion .recipe .details,.motion .recipe .chev,.motion .selection>.cta{opacity:0}
-.motion #choix:not(.seen) img { visibility: hidden; }
-.motion #choix.seen img { animation: menu-lettering .62s cubic-bezier(.22,.8,.24,1) both; }
+.selection-motion #choix:not(.seen) img { opacity: 0; }
+.selection-motion #choix.seen img { animation: menu-lettering .62s cubic-bezier(.22,.8,.24,1); }
 @keyframes menu-lettering {
   from { clip-path: inset(0 0 100% 0); transform: translateY(.45rem) rotate(-1deg); }
   to { clip-path: inset(-4%); transform: none; }
 }
-.motion .recipe.seen img{animation:serve .78s cubic-bezier(.2,.8,.2,1) both}
-.motion .recipe.seen .details{animation:rise .65s both}
-.motion .selection>.cta.seen{animation:rise .65s .15s both}
-.motion .recipe.seen .chev{animation-delay:.32s}
 @keyframes print-in{from{opacity:0;transform:translateY(34px) rotate(-4deg);clip-path:inset(0 0 85% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
-@keyframes serve{from{opacity:0;transform:scale(1.045)}to{opacity:1;transform:none}}
 }
 
 a.cta{text-decoration:none}
@@ -436,6 +430,7 @@ a.cta{text-decoration:none}
 }
 
 /* Product photography and captions share one tappable surface. */
+.selection h2 img { height: auto; }
 .selection .recipes { gap: clamp(1.5rem, 3vw, 3rem); }
 .selection .recipe {
   display: flex; flex-direction: column; align-items: stretch; gap: 0;
@@ -455,8 +450,13 @@ a.cta{text-decoration:none}
 
 .recipe .details b { background: var(--yellow); padding: .32em .7em; color: #46260d; font-size: .94rem; white-space: nowrap; }
 .recipe .details > span { grid-column: 1/-1; color: #564537; }
+.selection .recipe .details {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-content: start; gap: .65rem .75rem; padding: 0 clamp(1.5rem, 2.4vw, 2rem) 1.5rem;
+}
 .selection .recipe .details strong { color: var(--ink); }
-.selection .recipe .recipe-photo { background: transparent; }
+.selection .recipe .details > span { flex-basis: 100%; }
+.selection .recipe .recipe-photo { background: transparent; padding: 1.5rem 1rem .75rem; }
 .selection .recipe .recipe-photo img { mix-blend-mode: normal; }
 @media (hover:hover) { .recipe:hover strong { text-decoration: underline; text-underline-offset: .15em; } }
 .recipe:active { transform: scale(.992); }
@@ -495,13 +495,12 @@ a.cta{text-decoration:none}
   .interlude-marquee { margin-top: var(--group-space); }
   .interlude-stickers { margin-top: var(--group-space); }
   .interlude-copy { margin-top: clamp(2.5rem,6svh,3.5rem); }
-  .interlude { padding-bottom: var(--group-space); }
+  .interlude { padding-bottom: 2.5rem; }
   main > :is(.selection,.formule,.drinks,.restaurant,.avis) { padding-block: var(--chapter-space); }
-  main > .selection { padding-top: var(--group-space); }
-  .selection h2, .drinks-heading { margin-bottom: var(--group-space); }
-  .selection .recipes { row-gap: clamp(3.5rem,10svh,6rem); }
-  .recipe .recipe-photo { min-height: clamp(16rem,44svh,25rem); padding: 2rem 8%; background: transparent; }
-  .recipe .details { padding: 1rem 6% 2rem; row-gap: .65rem; }
+  main > .selection { padding-top: 2.5rem; }
+  .selection h2 { max-width: 32rem; margin-bottom: 2rem; }
+  .drinks-heading { margin-bottom: var(--group-space); }
+  .selection .recipes { row-gap: 2.75rem; }
   .formule-offre { padding-top: var(--group-space); }
   .formule-art h2 { margin-bottom: -7%; }
   .formule-offre .cta, .drinks .cta { margin-top: var(--action-space); }
@@ -515,20 +514,30 @@ a.cta{text-decoration:none}
   .footer-brand { margin-block: var(--group-space); }
 }
 @media (prefers-reduced-motion:no-preference) {
-  .motion .selection .recipe { opacity: 0; }
-  .motion .selection .recipe.seen { animation: card-settle .64s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) both; }
-  .motion .selection .recipe.seen img { animation: recipe-land .58s calc(var(--entry-delay,0ms) + 70ms) cubic-bezier(.22,.8,.24,1) both; }
-  .motion .selection .recipe.seen .details { animation: rise .45s calc(var(--entry-delay,0ms) + 160ms) both; }
+  .selection-motion :is(.recipe, .cta):not(.seen) { opacity: 0; }
+  .selection-motion .recipe.seen { animation: card-settle .6s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) backwards; }
+  .selection-motion .recipe.seen img { animation: recipe-land .42s cubic-bezier(.22,.8,.24,1) calc(var(--entry-delay,0ms) + 100ms) backwards; }
+  .selection-motion > .cta.seen { animation: action-arrive .32s cubic-bezier(.22,.8,.24,1); }
+  .selection-motion :is(.recipe, .cta):is(:focus, :target),
+  .selection-motion .recipe:is(:focus, :target) img,
+  .selection-motion:is(:target, :has(.recipe:target, .recipe:focus, > .cta:focus)) #choix img {
+    opacity: 1;
+    animation: none;
+  }
   @keyframes card-settle {
-    from { opacity: 0; transform: translateY(.85rem) rotate(-.6deg); }
+    from { opacity: .3; transform: translateY(12px) rotate(-.6deg); }
     to { opacity: 1; transform: none; }
   }
   @keyframes recipe-land {
-    from { opacity: 0; transform: translate(2%,-3%) rotate(1deg); }
+    from { transform: translateY(6px) scale(.975); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes action-arrive {
+    from { opacity: .4; transform: translateY(5px); }
     to { opacity: 1; transform: none; }
   }
 }
-.selection > .cta { margin-top: clamp(1.75rem,5svh,3rem); }
+.selection > .cta { margin-top: clamp(1.75rem,4svh,2.5rem); }
 .smash-list { max-width: 40rem; margin: 4rem auto; padding-inline: 5vw; }
 .smash-list h1 { font-size: clamp(2.5rem,7vw,4.5rem); line-height: 1; }
 .smash-list a { display: block; padding: 1.4rem 0; border-bottom: 1px solid #860b1235; text-decoration: none; color: inherit; }
