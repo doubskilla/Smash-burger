@@ -179,3 +179,16 @@ Une nouvelle couleur de carte, une nouvelle famille de mouvement ou une nouvelle
 ### Journal
 
 25 novembre 2026 — Formalisation de la direction. Grandes cartes étendues aux suppléments, animation orientée vers la lecture et l’action, réinitialisation commune et parcours produit à préparer. Réglages de mouvement et espacements proposés pour la prochaine validation visuelle.
+
+26 novembre 2026 — Reprise du travail sur mobile. Le commit `ccf8170` ajuste les cartes burgers et leur transition depuis la préparation. Cette version est une proposition à revoir avec l’utilisateur, pas une validation finale.
+
+Retours de l’utilisateur à reproduire et traiter en priorité :
+
+- Sur téléphone, la photo du burger du hero semble s’agrandir pendant le swipe vers le bas. Identifier la cause réelle sur mobile avant de la corriger. Le fondu `leave-menu-hero` agit sur l’opacité ; sa responsabilité dans un changement d’échelle n’est pas établie.
+- Les animations de la sélection des burgers semblent avoir disparu ou être trop discrètes. Vérifier le titre, les cartes et le CTA au défilement lent et rapide, ainsi qu’au retour dans la section.
+- Les sections après le hero semblent resserrées. Évaluer le rythme de l’ensemble, notamment le bandeau, les étiquettes, le texte de préparation et le titre des burgers. La capture mobile [image (4).png](image%20%284%29.png) montre ce passage. Ajuster les espacements selon le rendu, sans multiplier les marges mécaniquement.
+- Un comportement de défilement irrégulier apparaît parfois lorsqu’on revient vers une section précédente ou qu’on continue vers la suivante. Reproduire les allers-retours et identifier précisément le déclencheur avant de corriger.
+
+Le concept de grandes cartes concerne aussi les suppléments. La sélection burgers est déjà une première application ; la perfectionner avant d’étendre le principe aux suppléments. Les références fournies se trouvent dans [image.png](image.png), [image (1).png](image%20%281%29.png) et [image (2).png](image%20%282%29.png). Elles servent à guider la composition et ne constituent pas une maquette validée.
+
+Continuer section par section, d’abord sur mobile puis sur ordinateur. Vérifier visuellement le résultat et les animations, y compris les allers-retours et la réduction des mouvements. Le ressenti sur un téléphone réel reste à confirmer avec l’utilisateur. Un aperçu ngrok temporaire a été utilisé ; le relancer si nécessaire.
