@@ -194,3 +194,5 @@ Le concept de grandes cartes concerne aussi les suppléments. La sélection burg
 Continuer section par section, d’abord sur mobile puis sur ordinateur. Vérifier visuellement le résultat et les animations, y compris les allers-retours et la réduction des mouvements. Le ressenti sur un téléphone réel reste à confirmer avec l’utilisateur. Un aperçu ngrok temporaire a été utilisé ; le relancer si nécessaire.
 
 27 novembre 2026 — Première grande carte de complément proposée pour le bissap. Le visuel précède un bloc qui réunit nom, prix et description. L’entrée des boissons reprend le déclenchement des burgers et se rejoue après la sortie complète de la section. Valider cette carte sur téléphone avant de décliner la présentation sur les autres boissons.
+
+27 novembre 2026 — À la demande de l’utilisateur, les cinq boissons à la carte adoptent la présentation du bissap et la même séquence d’entrée. Une colonne sur mobile, deux sur tablette et trois sur grand écran facilitent la comparaison.

@@ -39,10 +39,10 @@ function showSheet(id, withMenu = false) {
     }
   } else if (id === 'supplements') {
     const catalog = content.querySelector('.drink-catalog');
-    for (const drink of document.querySelectorAll('.drink-row')) {
+    for (const drink of document.querySelectorAll('.drink-card')) {
       const item = document.createElement('li');
       const description = document.createElement('small');
-      description.textContent = drink.querySelector('.drink-description')?.textContent ?? drink.dataset.description;
+      description.textContent = drink.querySelector('.drink-description').textContent;
       item.append(drink.querySelector('.drink-name').cloneNode(true),
         drink.querySelector('.drink-price').cloneNode(true), description);
       catalog.append(item);
@@ -165,7 +165,7 @@ function animateSection(section, selector) {
 
 const drinks = document.querySelector('.drinks');
 animateCards(document.querySelector('.selection'), '.recipe');
-animateCards(drinks, '.drink-row', drinks.querySelector('.drinks-replay'));
+animateCards(drinks, '.drink-card', drinks.querySelector('.drinks-replay'));
 animateSection(document.querySelector('.restaurant'), '.visit-step');
 
 const footer = document.querySelector('.site-footer');

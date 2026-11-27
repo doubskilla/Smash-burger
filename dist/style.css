@@ -84,7 +84,7 @@ a.cta{text-decoration:none}
 }
 
 .drinks {padding: clamp(2.5rem, 7vw, 5rem) 5vw; color: var(--ink)}
-.drinks-inner {max-width: 46rem; margin-inline: auto}
+.drinks-inner {max-width: 72rem; margin-inline: auto}
 .drinks h2 {
   width: fit-content;
   margin: 0 0 clamp(2rem, 7vw, 3rem);
@@ -100,58 +100,28 @@ a.cta{text-decoration:none}
 @media (max-width: 355px) {.drinks-heading h2 {font-size: 2.4rem}}
 .drinks-list, .drink-catalog {list-style: none; margin: 0; padding: 0}
 .drinks-list {display: grid; gap: clamp(1.5rem, 6.5vw, 2rem)}
-.drink-row {
-  display: grid;
-  grid-template-columns: clamp(6rem, 30vw, 9rem) minmax(0, 1fr);
-  grid-template-areas: "photo name" "photo price";
-  column-gap: clamp(1.2rem, 5vw, 2.5rem);
-  row-gap: .4rem;
-}
-.drink-photo {
-  grid-area: photo;
-  position: relative;
-  isolation: isolate;
-  height: clamp(5rem, 22vw, 6.5rem);
-}
-.drink-row .drink-name {grid-area: name; align-self: end}
-.drink-row .drink-price {grid-area: price; align-self: start}
-.drink-photo::before {
-  content: ''; position: absolute; inset: 18% 6% 10%;
-  background: var(--yellow); border-radius: .48rem; transform: skew(-10deg) rotate(-6deg);
-}
-.drink-photo img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  margin: auto;
-  width: 80%;
-  height: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-.drink-feature {
+.drink-card {
   display: block; overflow: hidden;
   background: #fffdf8; border: 1px solid #a77864; border-radius: 1rem;
   box-shadow: 0 3px 0 #dac4af;
 }
-.drink-feature .drink-photo {
-  display: grid; place-items: center;
+.drink-card .drink-photo {
+  display: flex; align-items: center; justify-content: center;
   height: clamp(12rem, 55vw, 16rem);
   background: radial-gradient(ellipse at 50% 85%, #f2dfca, #fff6e8 75%);
 }
-.drink-feature .drink-photo::before {content: none}
-.drink-feature .drink-photo img {position: static; width: auto; height: 82%}
-.drink-feature .drink-details {
+.drink-photo img {display: block; width: auto; height: 82%; max-width: 90%; object-fit: contain}
+.drink-card .drink-details {
   display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;
   gap: .5rem 1rem; padding: 1.25rem 1.5rem 1.5rem;
 }
-.drink-feature .drink-name {font-size: clamp(1.5rem, 4vw, 2rem)}
-.drink-feature .drink-price {align-self: center}
+.drink-card .drink-name {font-size: clamp(1.5rem, 4vw, 2rem)}
 .drink-description {flex-basis: 100%; line-height: 1.4; color: #564537}
 @media (min-width: 701px) {
-  .drink-feature {display: grid; grid-template: auto / 45% 1fr; gap: 0}
-  .drink-feature .drink-photo {grid-area: auto}
-  .drink-feature .drink-details {align-content: center}
+  .drinks-list {grid-template-columns: repeat(2, minmax(0, 1fr))}
+}
+@media (min-width: 1050px) {
+  .drinks-list {grid-template-columns: repeat(3, minmax(0, 1fr))}
 }
 .drink-name {font-size: clamp(1.12rem, 5.1vw, 1.6rem); font-weight: 750; letter-spacing: -.035em}
 .drink-price {
@@ -163,17 +133,17 @@ a.cta{text-decoration:none}
 .drink-catalog li {display: grid; grid-template-columns: 1fr auto; gap: .2rem .8rem; align-items: center}
 .drink-catalog small {grid-column: 1 / -1; font-size: 1rem}
 @media (prefers-reduced-motion: no-preference) {
-  .drinks.selection-motion :is(h2, .drink-row):not(.seen) {opacity: 0}
+  .drinks.selection-motion :is(h2, .drink-card):not(.seen) {opacity: 0}
   .drinks.selection-motion h2.seen span {
     animation: menu-lettering .6s cubic-bezier(.22,.8,.24,1) backwards;
   }
-  .drinks.selection-motion .drink-row.seen {
+  .drinks.selection-motion .drink-card.seen {
     animation: card-settle .56s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) backwards;
   }
-  .drinks.selection-motion .drink-feature.seen .drink-photo img {
+  .drinks.selection-motion .drink-card.seen .drink-photo img {
     animation: recipe-land .4s ease-out calc(var(--entry-delay,0ms) + 80ms) backwards;
   }
-  .drinks.selection-motion .drink-feature.seen .drink-details {
+  .drinks.selection-motion .drink-card.seen .drink-details {
     animation: action-arrive .3s ease-out calc(var(--entry-delay,0ms) + 140ms) backwards;
   }
   .drinks.selection-motion .cta.seen:not(:focus) {animation: action-arrive .32s ease-out}
