@@ -192,3 +192,5 @@ Retours de l’utilisateur à reproduire et traiter en priorité :
 Le concept de grandes cartes concerne aussi les suppléments. La sélection burgers est déjà une première application ; la perfectionner avant d’étendre le principe aux suppléments. Les références fournies se trouvent dans [image.png](image.png), [image (1).png](image%20%281%29.png) et [image (2).png](image%20%282%29.png). Elles servent à guider la composition et ne constituent pas une maquette validée.
 
 Continuer section par section, d’abord sur mobile puis sur ordinateur. Vérifier visuellement le résultat et les animations, y compris les allers-retours et la réduction des mouvements. Le ressenti sur un téléphone réel reste à confirmer avec l’utilisateur. Un aperçu ngrok temporaire a été utilisé ; le relancer si nécessaire.
+
+27 novembre 2026 — Première grande carte de complément proposée pour le bissap. Le visuel précède un bloc qui réunit nom, prix et description. L’entrée des boissons reprend le déclenchement des burgers et se rejoue après la sortie complète de la section. Valider cette carte sur téléphone avant de décliner la présentation sur les autres boissons.

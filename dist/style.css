@@ -129,6 +129,30 @@ a.cta{text-decoration:none}
   max-height: 100%;
   object-fit: contain;
 }
+.drink-feature {
+  display: block; overflow: hidden;
+  background: #fffdf8; border: 1px solid #a77864; border-radius: 1rem;
+  box-shadow: 0 3px 0 #dac4af;
+}
+.drink-feature .drink-photo {
+  display: grid; place-items: center;
+  height: clamp(12rem, 55vw, 16rem);
+  background: radial-gradient(ellipse at 50% 85%, #f2dfca, #fff6e8 75%);
+}
+.drink-feature .drink-photo::before {content: none}
+.drink-feature .drink-photo img {position: static; width: auto; height: 82%}
+.drink-feature .drink-details {
+  display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between;
+  gap: .5rem 1rem; padding: 1.25rem 1.5rem 1.5rem;
+}
+.drink-feature .drink-name {font-size: clamp(1.5rem, 4vw, 2rem)}
+.drink-feature .drink-price {align-self: center}
+.drink-description {flex-basis: 100%; line-height: 1.4; color: #564537}
+@media (min-width: 701px) {
+  .drink-feature {display: grid; grid-template: auto / 45% 1fr; gap: 0}
+  .drink-feature .drink-photo {grid-area: auto}
+  .drink-feature .drink-details {align-content: center}
+}
 .drink-name {font-size: clamp(1.12rem, 5.1vw, 1.6rem); font-weight: 750; letter-spacing: -.035em}
 .drink-price {
   width: fit-content; background: var(--yellow); border-radius: 2em; padding: .26em .6em;
@@ -139,48 +163,20 @@ a.cta{text-decoration:none}
 .drink-catalog li {display: grid; grid-template-columns: 1fr auto; gap: .2rem .8rem; align-items: center}
 .drink-catalog small {grid-column: 1 / -1; font-size: 1rem}
 @media (prefers-reduced-motion: no-preference) {
-  .drinks.animating h2:not(.seen) span,
-  .drinks.animating .drink-row:not(.seen) > *,
-  .drinks.animating .cta:not(.seen):not(:focus-visible) {opacity: 0}
-
-  .drinks.animating h2.seen span {
-    animation: drinks-lettering .72s cubic-bezier(.2,.8,.2,1) var(--cue) both;
+  .drinks.selection-motion :is(h2, .drink-row):not(.seen) {opacity: 0}
+  .drinks.selection-motion h2.seen span {
+    animation: menu-lettering .6s cubic-bezier(.22,.8,.24,1) backwards;
   }
-  .drinks.animating h2.seen span:last-child {animation-delay: calc(var(--cue) + 170ms)}
-  .drink-row.seen .drink-photo::before {
-    transform-origin: left center;
-    animation: drinks-paper .48s cubic-bezier(.2,.75,.2,1) var(--cue) both;
+  .drinks.selection-motion .drink-row.seen {
+    animation: card-settle .56s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) backwards;
   }
-  .drink-row.seen .drink-photo img {
-    transform-origin: center 88%;
-    animation: drinks-land .78s cubic-bezier(.2,.75,.26,1) calc(var(--cue) + 100ms) both;
+  .drinks.selection-motion .drink-feature.seen .drink-photo img {
+    animation: recipe-land .4s ease-out calc(var(--entry-delay,0ms) + 80ms) backwards;
   }
-  .drink-row.seen .drink-name {animation: drinks-name .52s ease-out calc(var(--cue) + 270ms) both}
-  .drink-row.seen .drink-price {
-    transform-origin: 20% center;
-    animation: drinks-stamp .48s cubic-bezier(.2,.8,.2,1) calc(var(--cue) + 440ms) both;
+  .drinks.selection-motion .drink-feature.seen .drink-details {
+    animation: action-arrive .3s ease-out calc(var(--entry-delay,0ms) + 140ms) backwards;
   }
-  .drinks.animating .cta.seen {animation: rise .58s ease-out calc(var(--cue) + 240ms) both}
-  @keyframes drinks-lettering {
-    from {clip-path: inset(-15% 0 100%); transform: translate(-.2em,.27em) rotate(-3deg); opacity: 0}
-    to {clip-path: inset(-15% -8% -18%); transform: none; opacity: 1}
-  }
-  @keyframes drinks-paper {
-    from {transform: skew(-10deg) rotate(-12deg) scaleX(0)}
-    to {transform: skew(-10deg) rotate(-6deg) scaleX(1)}
-  }
-  @keyframes drinks-land {
-    0% {opacity: 0; transform: translate(17%,-13%) rotate(9deg) scale(.88)}
-    62% {opacity: 1; transform: translate(-1%,0) rotate(-3deg) scale(1.015)}
-    84% {transform: rotate(1deg)}
-    100% {opacity: 1; transform: none}
-  }
-  @keyframes drinks-name {from {opacity: 0; transform: translateX(-15px)} to {opacity: 1; transform: none}}
-  @keyframes drinks-stamp {
-    0% {opacity: 0; transform: scale(.72) rotate(-9deg)}
-    68% {opacity: 1; transform: scale(1.06) rotate(1deg)}
-    100% {opacity: 1; transform: none}
-  }
+  .drinks.selection-motion .cta.seen:not(:focus) {animation: action-arrive .32s ease-out}
 }
 
 .restaurant {padding: clamp(2.4rem, 7vw, 5rem) 3vw clamp(3rem, 8vw, 6rem)}
@@ -514,7 +510,7 @@ a.cta{text-decoration:none}
   .footer-brand { margin-block: var(--group-space); }
 }
 @media (prefers-reduced-motion:no-preference) {
-  .selection-motion :is(.recipe, .cta):not(.seen) { opacity: 0; }
+  .selection-motion :is(.recipe, .cta):not(.seen):not(:focus):not(:target) { opacity: 0; }
   .selection-motion .recipe.seen { animation: card-settle .6s cubic-bezier(.22,.8,.24,1) var(--entry-delay,0ms) backwards; }
   .selection-motion .recipe.seen img { animation: recipe-land .42s cubic-bezier(.22,.8,.24,1) calc(var(--entry-delay,0ms) + 100ms) backwards; }
   .selection-motion > .cta.seen { animation: action-arrive .32s cubic-bezier(.22,.8,.24,1); }

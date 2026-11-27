@@ -42,7 +42,7 @@ function showSheet(id, withMenu = false) {
     for (const drink of document.querySelectorAll('.drink-row')) {
       const item = document.createElement('li');
       const description = document.createElement('small');
-      description.textContent = drink.dataset.description;
+      description.textContent = drink.querySelector('.drink-description')?.textContent ?? drink.dataset.description;
       item.append(drink.querySelector('.drink-name').cloneNode(true),
         drink.querySelector('.drink-price').cloneNode(true), description);
       catalog.append(item);
@@ -60,12 +60,11 @@ document.querySelectorAll('[data-open]').forEach(button => button.onclick = () =
 });
 dialog.querySelector('.close').onclick = () => dialog.close();
 dialog.onclose = () => opener?.focus();
-const selection = document.querySelector('.selection');
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-{
+function animateCards(selection, cardSelector, replayButton) {
   const title = selection.querySelector('h2');
-  const cards = [...selection.querySelectorAll('.recipe')];
+  const cards = [...selection.querySelectorAll(cardSelector)];
   const targets = [title, ...cards, selection.querySelector('.cta')];
   let frame = 0;
   let previousScroll = window.scrollY;
@@ -74,6 +73,7 @@ const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function updateSelection(now) {
     frame = 0;
+    if (replayButton) replayButton.hidden = motionPreference.matches;
     const height = window.innerHeight;
     const bounds = selection.getBoundingClientRect();
     const scrollingUp = window.scrollY < previousScroll;
@@ -112,6 +112,12 @@ const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   window.addEventListener('scroll', scheduleSelection, {passive: true});
   window.addEventListener('resize', scheduleSelection);
+  replayButton?.addEventListener('click', () => {
+    targets.forEach(target => target.classList.remove('seen'));
+    titleStart = null;
+    void selection.offsetWidth;
+    scheduleSelection();
+  });
   motionPreference.addEventListener('change', scheduleSelection);
   scheduleSelection();
 }
@@ -128,18 +134,16 @@ if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('motion');
 }
 
-function animateSection(section, selector, replayButton) {
+function animateSection(section, selector) {
   const targets = section.querySelectorAll(selector);
   let observer;
 
   function reset() {
     observer?.disconnect();
     section.classList.remove('animating');
-    if (replayButton) replayButton.hidden = true;
     for (const target of targets) target.classList.remove('seen');
     if (motionPreference.matches || !('IntersectionObserver' in window)) return;
 
-    if (replayButton) replayButton.hidden = false;
     section.classList.add('animating');
     observer = new IntersectionObserver(entries => {
       const incoming = [];
@@ -155,16 +159,13 @@ function animateSection(section, selector, replayButton) {
     }, {rootMargin: '0px 0px -14% 0px', threshold: [0, .25]});
     for (const target of targets) observer.observe(target);
   }
-  replayButton?.addEventListener('click', () => {
-    reset();
-    if (!replayButton.hidden) replayButton.focus({preventScroll: true});
-  });
   motionPreference.addEventListener('change', reset);
   reset();
 }
 
 const drinks = document.querySelector('.drinks');
-animateSection(drinks, 'h2, .drink-row, .cta', drinks.querySelector('.drinks-replay'));
+animateCards(document.querySelector('.selection'), '.recipe');
+animateCards(drinks, '.drink-row', drinks.querySelector('.drinks-replay'));
 animateSection(document.querySelector('.restaurant'), '.visit-step');
 
 const footer = document.querySelector('.site-footer');
