@@ -5,7 +5,7 @@
 .opening{display:flex;flex-direction:column}.opening>.hero{margin:auto}.hero-meta{display:flex;justify-content:space-between;align-items:center;margin:0 5vw}.selection{background:#fff2df;padding:clamp(3rem,6vw,6rem) 5vw;border-top:1px solid}.selection h2{margin:0 auto 2.5rem;max-width:1450px}.selection h2 img{display:block;width:min(520px,91%)}.recipes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1450px;margin:auto;border-block:1px solid}.recipe{text-align:left;position:relative;padding:1.6rem 2vw 1.8rem}.recipe+.recipe{border-left:1px solid #860b123d}.recipe img{width:100%;height:auto;display:block;aspect-ratio:460/330;object-fit:contain;mix-blend-mode:multiply;mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(transparent,#000 3%,#000 97%,transparent);mask-composite:intersect;transition:transform .3s}.recipe:hover img{transform:translateY(-4px) rotate(-1deg)}.details{display:grid;justify-items:start;gap:.45rem;padding-right:1rem}.details strong{font-size:clamp(1.4rem,2.4vw,2.6rem);letter-spacing:-.04em}.details b{padding:.2rem .65rem;background:var(--yellow);border-radius:2rem}.details span{line-height:1.35}.chev{position:absolute;right:3%;bottom:3rem;font-size:2rem}.selection>.cta{margin-top:1.6rem}fieldset{border:1px solid #860b1255}fieldset label{display:block;padding:8px 0}input{accent-color:var(--ink)}
 @media(max-width:700px){.opening{
   min-height:calc(100vh - var(--mobile-header-height));
-  min-height:calc(100dvh - var(--mobile-header-height));
+  min-height:calc(100svh - var(--mobile-header-height));
 }
 .opening>.hero{margin:0 auto}
 .selection h2{margin-bottom:1rem}.recipes{display:block}.recipe{width:100%;display:grid;grid-template-columns:42% 1fr;align-items:center;gap:.8rem;padding:1.1rem 0}.recipe+.recipe{border-left:0;border-top:1px solid #860b1255}.chev{right:0;bottom:44%}.details{gap:.35rem}.selection h2 img{max-width:360px}}
@@ -290,11 +290,11 @@ a.cta{text-decoration:none}
   .opening > .hero {
     flex: 1;
     justify-content: space-around;
-    padding-block: clamp(14px, 2.4dvh, 25px) max(16px, env(safe-area-inset-bottom));
+    padding-block: clamp(14px, 2.4svh, 25px) max(16px, env(safe-area-inset-bottom));
   }
-  .hero .art { width: min(100%, 53dvh, 490px); flex: none; }
+  .hero .art { width: min(100%, 53svh, 490px); flex: none; }
   .hero .copy { width: min(100%, 510px); margin-inline: auto; padding-top: 1.4rem; }
-  .hero .copy h1 { margin-bottom: clamp(.5rem, 2dvh, 1rem); }
+  .hero .copy h1 { margin-bottom: clamp(.5rem, 2svh, 1rem); }
   .hero .cta { min-height: 48px; }
 }
 @media (prefers-reduced-motion: no-preference) {
