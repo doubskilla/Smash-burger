@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff6e8"><title>Ma commande · Smash Burger</title>
+<link rel="stylesheet" href="product.css">
+<script src="order-core.js" defer></script><script src="product.js" defer></script></head><body data-order-page><a class="skip" href="#order-title">Aller à ma commande</a><header class="site-head"><a href="./" aria-label="Smash Burger, accueil"><img src="assets/logo.png" alt="" width="108" height="55"></a><a class="order-link" href="commande.html">Ma commande <span data-order-count hidden></span></a></header>
+<main class="order-page"><a class="back-row" href="./#burgers">← Retour à la carte</a><h1 id="order-title">Ma commande</h1>
+<div id="order-lines"></div><p id="order-empty" hidden>Ton prochain smash t’attend. <a href="./#burgers">Voir la carte</a></p>
+<section id="order-actions" hidden aria-label="Récapitulatif"><div class="order-total"><span>Total</span><strong id="order-total"></strong></div>
+<button class="primary-action" id="copy-order" type="button">Copier le récapitulatif</button><p id="copy-status" class="feedback" role="status"></p>
+<textarea id="copy-fallback" aria-label="Récapitulatif à copier" readonly hidden></textarea>
+<a class="secondary-action" href="./#burgers">Ajouter un autre smash</a></section>
+<noscript>Active JavaScript pour retrouver ta commande.</noscript>
+<p id="storage-message" role="status" class="hint"></p></main></body></html>

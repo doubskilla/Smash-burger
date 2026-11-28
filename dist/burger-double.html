@@ -1,11 +1,40 @@
 <!doctype html>
-<html lang="fr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff6e8"><title>Le Double · Smash Burger</title>
-<link rel="stylesheet" href="style.css"></head>
-<body class="product-page">
-<header><a href="./" aria-label="Smash Burger, accueil"><img src="assets/logo.png" width="108" height="55" alt=""></a>
-<a href="./#burger-double">Retour aux burgers</a></header>
-<main class="product"><div class="recipe-photo"><img src="assets/double.webp" alt="" width="460" height="330"></div><section>
-<h1>Le Double</h1><p>Deux steaks, double cheddar.</p><fieldset><legend>Choisir une formule</legend><label><input type="radio" name="formule" checked> Burger seul · 4 500 FCFA</label><label><input type="radio" name="formule" value="menu"> En menu · 6 000 FCFA</label></fieldset>
-</section></main></body></html>
+<link rel="stylesheet" href="product.css">
+<script src="order-core.js" defer></script><script src="product.js" defer></script></head>
+<body data-product="double"><a class="skip" href="#product-title">Aller au produit</a><header class="site-head"><a href="./" aria-label="Smash Burger, accueil"><img src="assets/logo.png" alt="" width="108" height="55"></a><a class="order-link" href="commande.html">Ma commande <span data-order-count hidden></span></a></header>
+<nav class="back-row" aria-label="Retour"><a href="./#burger-double" data-back>← Retour à la carte</a></nav>
+<main class="product-layout">
+<div class="product-art"><img src="assets/double.webp" alt="Le Double" width="460" height="330" fetchpriority="high"></div>
+<section class="product-info" aria-labelledby="product-title">
+<div class="product-intro"><h1 id="product-title">Le Double</h1><p>Deux steaks smashés et double cheddar.</p></div>
+<form id="product-form">
+<fieldset class="configuration" disabled>
+<fieldset class="formula-group"><legend>Tu le prends comment ?</legend>
+<label class="choice"><input type="radio" name="formula" value="solo" checked><span><strong>Burger seul</strong></span><span class="choice-price">4 500 FCFA</span></label>
+<label class="choice"><input type="radio" name="formula" value="menu"><span><strong>En menu</strong><small>Frites et boisson au choix</small></span><span class="choice-price">6 000 FCFA</span></label>
+</fieldset>
+<fieldset id="menu-drinks" class="menu-drinks" hidden disabled><legend>Ta boisson incluse</legend>
+<p class="hint">Une boisson par menu, sans supplément de prix.</p>
+<div class="drink-options"><label class="drink-option"><input type="radio" name="drink" value="bissap" required><span>Bissap</span></label><label class="drink-option"><input type="radio" name="drink" value="bouye" required><span>Bouye</span></label><label class="drink-option"><input type="radio" name="drink" value="ditakh" required><span>Ditakh</span></label><label class="drink-option"><input type="radio" name="drink" value="eau" required><span>Eau</span></label><label class="drink-option"><input type="radio" name="drink" value="citronnade" required><span>Citronnade</span></label></div>
+</fieldset>
+<details class="disclosure"><summary>Un ingrédient en moins ?<span aria-hidden="true"></span></summary><div class="disclosure-body">
+<label class="check-row"><input type="checkbox" name="removals" value="cheddar"><span>Sans cheddar</span></label>
+
+</div></details>
+<details class="disclosure"><summary>Une boisson en plus ?<span aria-hidden="true"></span></summary><div class="disclosure-body">
+<p class="hint">Ces ajouts sont facturés en plus, pour chaque burger commandé.</p>
+<label class="check-row"><input type="checkbox" name="extras" value="bissap"><span>Bissap</span><span class="extra-price">+ 700 FCFA</span></label><label class="check-row"><input type="checkbox" name="extras" value="bouye"><span>Bouye</span><span class="extra-price">+ 800 FCFA</span></label><label class="check-row"><input type="checkbox" name="extras" value="ditakh"><span>Ditakh</span><span class="extra-price">+ 800 FCFA</span></label><label class="check-row"><input type="checkbox" name="extras" value="eau"><span>Eau</span><span class="extra-price">+ 500 FCFA</span></label><label class="check-row"><input type="checkbox" name="extras" value="citronnade"><span>Citronnade</span><span class="extra-price">+ 700 FCFA</span></label>
+</div></details>
+<div class="checkout-row"><div class="quantity"><label for="quantity">Quantité</label><div class="stepper"><button type="button" data-step="-1" aria-label="Retirer un burger">−</button><input id="quantity" name="quantity" type="number" min="1" max="20" value="1" inputmode="numeric" required><button type="button" data-step="1" aria-label="Ajouter un burger">+</button></div></div>
+<div class="total-group"><span id="total-label">Total</span><output id="product-total" aria-labelledby="total-label" aria-live="polite" aria-atomic="true">4 500 FCFA</output></div></div>
+<p id="form-error" class="form-error" role="alert"></p>
+<button class="primary-action" type="submit">Ajouter à ma commande</button>
+<p id="added-message" class="feedback" role="status"></p>
+</fieldset></form>
+<noscript><p>Active JavaScript pour choisir tes options et calculer ta commande.</p></noscript>
+</section></main>
+<dialog id="added-dialog" aria-labelledby="added-title"><button type="button" class="dialog-close" aria-label="Fermer">×</button><h2 id="added-title">C’est ajouté !</h2><p id="added-description"></p><a class="primary-action" href="commande.html">Voir ma commande</a><button class="secondary-action" type="button" data-continue>Continuer mon choix</button></dialog>
+<footer class="product-footer"><a href="smashs.html">Voir les autres smashs</a><span>Smash Burger · Dakar</span></footer>
+</body></html>

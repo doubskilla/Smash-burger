@@ -198,3 +198,26 @@ Continuer section par section, d’abord sur mobile puis sur ordinateur. Vérifi
 27 novembre 2026 — À la demande de l’utilisateur, les cinq boissons à la carte adoptent la présentation du bissap et la même séquence d’entrée. Une colonne sur mobile, deux sur tablette et trois sur grand écran facilitent la comparaison.
 
 28 novembre 2026 — La section Formule suit maintenant le même déclenchement au défilement que les cartes des burgers et des boissons. Son titre, sa composition et son offre entrent dans l’ordre de lecture, puis se réinitialisent après la sortie complète de la section. Le bouton Composer mon menu reste accessible pendant le mouvement.
+
+
+## 13. Page produit — décisions du 28 novembre 2026
+
+La fiche mobile reprend les couleurs crème, bordeaux et jaune. Le nom du burger est le seul grand titre expressif ; les sous-titres et contrôles utilisent une sans-serif plus discrète. Description en brun sombre. Accès textuel « Ma commande » sans grand pictogramme de panier ; compteur seulement après ajout. Retour à la carte sous le logo, historique natif utilisé quand on arrive de la carte.
+
+Le prix est affiché dans les choix burger seul / menu, puis dans le total près de la quantité. Pas de prix à côté du titre ni dans le bouton « Ajouter à ma commande ». Le total garde une petite étiquette jaune inclinée.
+
+« Un ingrédient en moins ? » ouvre les retraits propres à la recette, sans coût. Le Piment propose séparément les piments et la sauce relevée : retirer les piments ne retire pas implicitement la sauce. Les possibilités de retrait sont des paramètres de démonstration à confirmer avec un restaurant réel, notamment si un ingrédient est incorporé pendant la préparation.
+
+Le menu ajoute 1 500 FCFA, frites et une boisson au choix. La boisson incluse est obligatoire pour ajouter un menu et n'est pas facturée une seconde fois. « Une boisson en plus ? » présente uniquement les boissons existantes, aux tarifs déjà affichés. Chaque boisson cochée est un ajout par burger ; le texte l'explique. Aucun tarif de cheddar ou viande supplémentaire n'est inventé.
+
+Total = (prix du burger + éventuelle formule + ajouts payants) × quantité. Les retraits ne réduisent pas le prix. Mise à jour immédiate ; prix et contrôles accessibles sans attendre l'animation.
+
+Le catalogue des fiches et les calculs du récapitulatif sont partagés dans dist/order-core.js. Les cinq recettes conservent leurs prix existants. Les recettes Oignons et Poivré n'ont pas de photo dédiée dans le dépôt : ne pas leur attribuer une fausse photographie.
+
+L'ajout alimente un récapitulatif local conservé dans ce navigateur, avec options, quantités modifiables, retraits de lignes et copie du texte. La transmission WhatsApp reste à raccorder lorsque le numéro destinataire est fourni ; copier le récapitulatif ne confirme pas une commande au restaurant.
+
+Les animations d'entrée sont brèves et coordonnées, sans bloquer les choix. Aucun mouvement d'ambiance permanent dans le formulaire. Réduction des animations respectée.
+
+### État de vérification de cette proposition
+
+Calculs vérifiés avec 15 scénarios, test persistant : node tests/order-core.cjs. Syntaxe JavaScript vérifiée. Rendu, navigation clavier, interactions DOM et comportement Safari/iPhone restent à tester dans un navigateur : l'environnement d'exécution était indisponible lors de la préparation. Ces changements sont une branche de travail, pas une nouvelle publication du site.
