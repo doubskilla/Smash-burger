@@ -122,18 +122,6 @@ function animateCards(selection, cardSelector, replayButton) {
   scheduleSelection();
 }
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (entry.intersectionRatio < .12) continue;
-      entry.target.classList.add('seen');
-      observer.unobserve(entry.target);
-    }
-  }, {rootMargin:'0px 0px -8% 0px', threshold:.12});
-  document.querySelectorAll('.formule-reveal').forEach(target => observer.observe(target));
-  document.documentElement.classList.add('motion');
-}
-
 function animateSection(section, selector) {
   const targets = section.querySelectorAll(selector);
   let observer;
@@ -165,6 +153,7 @@ function animateSection(section, selector) {
 
 const drinks = document.querySelector('.drinks');
 animateCards(document.querySelector('.selection'), '.recipe');
+animateCards(document.querySelector('.formule'), '.formule-scene, .formule-offre');
 animateCards(drinks, '.drink-card', drinks.querySelector('.drinks-replay'));
 animateSection(document.querySelector('.restaurant'), '.visit-step');
 

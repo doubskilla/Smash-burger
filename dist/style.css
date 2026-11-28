@@ -72,11 +72,11 @@ a.cta{text-decoration:none}
   .formule-offre {padding: .45rem 5vw 0}
 }
 @media(prefers-reduced-motion:no-preference) {
-  .motion .formule-reveal {opacity: 0}
-  .motion #formule-titre.seen {animation: print-in .72s cubic-bezier(.2,.75,.2,1) both}
-  .motion .formule-scene.seen {animation: plate-in .8s cubic-bezier(.2,.8,.2,1) both}
-  .motion .formule-scene.seen .formule-note {animation: write .48s .42s both}
-  .motion .formule-offre.seen, .motion .formule-offre:focus-within {animation: rise .55s both}
+  .formule.selection-motion .formule-reveal:not(.seen):not(:focus-within) {opacity: 0}
+  .formule.selection-motion #formule-titre.seen {animation: print-in .72s cubic-bezier(.2,.75,.2,1) both}
+  .formule.selection-motion .formule-scene.seen {animation: plate-in .8s cubic-bezier(.2,.8,.2,1) var(--entry-delay,0ms) backwards}
+  .formule.selection-motion .formule-scene.seen .formule-note {animation: write .48s calc(var(--entry-delay,0ms) + 300ms) backwards}
+  .formule.selection-motion .formule-offre.seen {animation: rise .55s var(--entry-delay,0ms) backwards}
   @keyframes plate-in {
     from {opacity: 0; transform: translateY(22px) rotate(-2deg) scale(.97)}
     to {opacity: 1; transform: none}

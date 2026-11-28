@@ -196,3 +196,5 @@ Continuer section par section, d’abord sur mobile puis sur ordinateur. Vérifi
 27 novembre 2026 — Première grande carte de complément proposée pour le bissap. Le visuel précède un bloc qui réunit nom, prix et description. L’entrée des boissons reprend le déclenchement des burgers et se rejoue après la sortie complète de la section. Valider cette carte sur téléphone avant de décliner la présentation sur les autres boissons.
 
 27 novembre 2026 — À la demande de l’utilisateur, les cinq boissons à la carte adoptent la présentation du bissap et la même séquence d’entrée. Une colonne sur mobile, deux sur tablette et trois sur grand écran facilitent la comparaison.
+
+28 novembre 2026 — La section Formule suit maintenant le même déclenchement au défilement que les cartes des burgers et des boissons. Son titre, sa composition et son offre entrent dans l’ordre de lecture, puis se réinitialisent après la sortie complète de la section. Le bouton Composer mon menu reste accessible pendant le mouvement.
